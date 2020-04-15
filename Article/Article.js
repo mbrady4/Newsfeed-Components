@@ -140,6 +140,7 @@ function articleCreator (article) {
   const secondParagraph = document.createElement('p');
   const thirdParagraph = document.createElement('p');
   const button = document.createElement('span');
+  const closeButton = document.createElement('span');
 
   // Add text content
   title.textContent = article.title;
@@ -147,19 +148,28 @@ function articleCreator (article) {
   firstParagraph.textContent = article.firstParagraph;
   secondParagraph.textContent = article.secondParagraph;
   thirdParagraph.textContent = article.thirdParagraph;
+  button.textContent = "Open Article";
+  closeButton.textContent = "Delete Article";
   
   // Add classes
   parent.classList.add('article');
   date.classList.add('date');
-  button.classList.add('expandedButton');
+  button.classList.add('expandButton');
+  closeButton.classList.add('closeButton');
 
   // Add EventListener
-  button.addEventListener('click', () => {
-    button.classList.toggle('article-open');
+  button.addEventListener('click', (event) => {
+    parent.classList.toggle('article-open');
+    event.target.textContent = "Close Article"
+  });
+
+  closeButton.addEventListener('click', () => {
+    parent.classList.toggle('hide');
   });
 
   // Append to parent element
   parent.prepend(button);
+  parent.prepend(closeButton);
   parent.prepend(thirdParagraph);
   parent.prepend(secondParagraph);
   parent.prepend(firstParagraph);
@@ -177,5 +187,6 @@ let articles = data.map((article) => {
 let parent = document.querySelector('.articles');
 
 articles.forEach(article => {
+  console.log(article);
   parent.append(article);
 });

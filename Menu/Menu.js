@@ -57,7 +57,7 @@ const head = document.querySelector('.header');
 head.prepend(menu);
 
 const menuButton = document.querySelector('.menu-button');
-menuButton.addEventListener('click', () => {
+menuButton.addEventListener('click', (event) => {
   let menuItem = document.querySelector('.menu');
   menuItem.classList.toggle('menu--open');
 })

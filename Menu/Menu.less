@@ -5,17 +5,21 @@
 }
 
 .menu {
-  display: none;
+  display:inline-block;
   position: fixed;
   top: 75px;
   left: 0;
-  width: 350px;
+  width: 100vw;
   height: 100vh; /* This give the height 100% of the screen or, '100% of View Height' */
   background-color: #81C784;
   border: 1px solid #004D40;
   border-left: none;
   border-bottom: none;
   z-index: 2; /* This set the layer level of the element, it has precendence over initial level of 1*/
+  transition-property: transform; 
+  transition-duration: 0.3s; 
+  transition-timing-function: cubic-bezier(0, .52, 0, 1);
+  transform: translate3d(-100vw, 0, 0);
 }
 
 .menu ul li{
@@ -26,5 +30,5 @@
 }
 
 .menu--open {
-  display: block;
+  transform: translate3d(0vw, 0, 0);
 }
